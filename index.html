@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Puglia &middot; May 2027 &middot; A Downhillers Mini-Break</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terra:#8B3A2A;
+  --gold:#C4962A;
+  --olive:#4A6741;
+  --azure:#1A6B9A;
+  --cream:#FAF7F2;
+  --ivory:#F3EEE6;
+  --white:#FFFFFF;
+  --ink:#1E1E1E;
+  --mid:#4A4A4A;
+  --slate:#6B7280;
+  --border:rgba(196,150,42,0.2);
+  --shadow:rgba(30,20,5,0.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);overflow-x:hidden}
+
+/* ===== LOADING ===== */
+#loading{position:fixed;inset:0;background:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.8s}
+#loading.done{opacity:0;pointer-events:none}
+.load-icon{font-size:2.5rem;margin-bottom:16px;animation:spin 3s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.load-text{color:#D4A96A;font-family:'Inter',sans-serif;font-size:0.85rem;letter-spacing:0.15em;text-transform:uppercase}
+
+/* ===== HERO ===== */
+#s-hero{position:relative;height:100vh;min-height:560px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+#hero-canvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,5,0,0.38) 0%,rgba(10,5,0,0.22) 50%,rgba(10,5,0,0.55) 100%)}
+.hero-content{position:relative;z-index:2;padding:0 24px}
+.hero-badge{display:inline-block;background:rgba(196,150,42,0.25);border:1px solid rgba(196,150,42,0.5);color:#F0D080;font-size:0.7rem;letter-spacing:0.18em;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:18px;backdrop-filter:blur(4px)}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(2.6rem,7vw,5rem);color:#FFFFFF;line-height:1.1;text-shadow:0 2px 20px rgba(0,0,0,0.4);margin-bottom:10px}
+.hero-title em{font-style:italic;color:#F0D080}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.82);letter-spacing:0.08em;margin-bottom:6px}
+.hero-names{font-size:0.78rem;color:rgba(255,255,255,0.6);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:28px}
+.hero-scroll{display:inline-flex;flex-direction:column;align-items:center;gap:4px;color:rgba(255,255,255,0.55);font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;animation:pulse 2.5s ease-in-out infinite}
+.hero-scroll-bar{width:1px;height:32px;background:linear-gradient(180deg,transparent,rgba(255,255,255,0.55))}
+@keyframes pulse{0%,100%{opacity:0.55}50%{opacity:1}}
+
+/* ===== NAV DOTS ===== */
+.nav-dots{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:100;display:flex;flex-direction:column;gap:8px}
+.nav-pip{width:8px;height:8px;border-radius:50%;background:rgba(100,80,40,0.25);border:1.5px solid rgba(100,80,40,0.4);cursor:pointer;transition:all 0.3s;text-decoration:none;display:block}
+.nav-pip.active{background:var(--gold);border-color:var(--gold);transform:scale(1.35)}
+@media(max-width:600px){.nav-dots{display:none}}
+
+/* ===== LOCATION PHOTOS ===== */
+.photo-strip{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;margin:0 -24px 32px;padding:0 24px 10px;scrollbar-width:none}
+.photo-strip::-webkit-scrollbar{display:none}
+.photo-strip-item{flex:0 0 auto;scroll-snap-align:start;border-radius:12px;overflow:hidden;position:relative}
+.photo-strip-item img{display:block;height:180px;width:260px;object-fit:cover;transition:transform 0.4s}
+.photo-strip-item:hover img{transform:scale(1.04)}
+.photo-strip-item .photo-label{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(0deg,rgba(0,0,0,0.65),transparent);color:#fff;font-size:0.72rem;letter-spacing:0.08em;font-family:'Inter',sans-serif}
+.photo-banner{width:100%;height:220px;object-fit:cover;border-radius:14px;margin-bottom:28px;display:block}
+@media(max-width:640px){.photo-banner{height:160px}.photo-strip-item img{height:140px;width:200px}}
+
+/* ===== SECTION SHARED ===== */
+.section-inner{max-width:820px;margin:0 auto;padding:64px 24px}
+.section-day{display:inline-block;font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.2;margin-bottom:20px}
+.section-title.terra{color:var(--terra)}
+.section-title.gold{color:var(--gold)}
+.section-title.azure{color:var(--azure)}
+.section-title.olive{color:var(--olive)}
+.section-intro{font-size:0.97rem;color:var(--mid);line-height:1.7;margin-bottom:32px;max-width:640px}
+.day-stripe{height:4px;background:linear-gradient(90deg,var(--gold),transparent)}
+
+/* ===== CARDS ===== */
+.card{background:var(--white);border-radius:12px;padding:18px 20px;box-shadow:0 2px 12px var(--shadow);position:relative;transition:transform 0.25s,box-shadow 0.25s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 20px var(--shadow)}
+.card-icon{font-size:1.4rem;margin-bottom:8px;display:block}
+.card-title{font-weight:600;font-size:0.95rem;color:var(--ink);margin-bottom:6px}
+.card-title a{color:inherit;text-decoration:none}
+.card-title a:hover{color:var(--terra)}
+.card-body{font-size:0.85rem;color:var(--mid);line-height:1.65}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+
+/* ===== TAGS ===== */
+.tag{display:inline-block;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;padding:3px 8px;border-radius:20px;font-weight:600}
+.tag-r{background:rgba(139,58,42,0.1);color:var(--terra)}
+.tag-g{background:rgba(74,103,65,0.1);color:var(--olive)}
+.tag-o{background:rgba(196,150,42,0.12);color:#9A7020}
+.tag-b{background:rgba(26,107,154,0.1);color:var(--azure)}
+
+/* ===== TIME BLOCKS ===== */
+.time-block{display:flex;gap:16px;margin-bottom:22px;align-items:flex-start}
+.t-tag{min-width:68px;text-align:center;font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--terra);border-top:2px solid var(--terra);padding-top:6px;line-height:1.4}
+.t-body{flex:1}
+.t-body p{font-size:0.88rem;color:var(--mid);line-height:1.65;margin-bottom:10px}
+
+/* ===== HOTEL CHOICE CARDS ===== */
+.hotel-choice{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:18px 0}
+@media(max-width:580px){.hotel-choice{grid-template-columns:1fr}}
+.hotel-card{border-radius:14px;padding:18px;border:1.5px solid var(--border);background:var(--white);position:relative;overflow:hidden}
+.hotel-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.hotel-card.mid::before{background:var(--olive)}
+.hotel-card.lux::before{background:linear-gradient(90deg,var(--gold),#E8C060)}
+.hotel-label{font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;margin-bottom:8px}
+.hotel-card.mid .hotel-label{color:var(--olive)}
+.hotel-card.lux .hotel-label{color:var(--gold)}
+.hotel-name{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:4px;color:var(--ink)}
+.hotel-name a{color:inherit;text-decoration:none}
+.hotel-name a:hover{color:var(--terra)}
+.hotel-location{font-size:0.75rem;color:var(--slate);margin-bottom:8px}
+.hotel-desc{font-size:0.82rem;color:var(--mid);line-height:1.6;margin-bottom:10px}
+.hotel-price{font-size:0.78rem;font-weight:600;color:var(--terra)}
+
+/* ===== TIP BOX ===== */
+.tip-box{background:var(--ivory);border-left:3px solid var(--gold);border-radius:0 10px 10px 0;padding:14px 16px;margin:14px 0}
+.tip-label{font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;color:var(--gold);margin-bottom:8px}
+.tip-body{font-size:0.84rem;color:var(--mid);line-height:1.65}
+
+/* ===== HIGHLIGHT BOX ===== */
+.highlight-box{background:linear-gradient(135deg,rgba(139,58,42,0.06),rgba(196,150,42,0.06));border:1px solid rgba(196,150,42,0.25);border-radius:12px;padding:18px 20px;margin:16px 0}
+
+/* ===== OPT BADGE ===== */
+.opt-badge{position:absolute;top:12px;right:12px;font-size:0.6rem;letter-spacing:0.08em;font-weight:700;text-transform:uppercase;padding:3px 8px;border-radius:10px}
+.opt-m{background:rgba(74,103,65,0.12);color:var(--olive)}
+.opt-l{background:rgba(196,150,42,0.15);color:#8A6A10}
+
+/* ===== SECTIONS ===== */
+#s-hero{}
+#s-flight{background:var(--white)}
+#s-day1{background:var(--ivory)}
+#s-day2{background:var(--white)}
+#s-day3{background:var(--ivory)}
+#s-day4{background:var(--white)}
+#s-day5{background:var(--ivory)}
+#s-day6{background:var(--white)}
+#s-farewell{background:var(--ivory)}
+
+/* ===== FLIGHT SECTION ===== */
+.flight-row{display:flex;align-items:center;gap:12px;background:var(--white);border:1px solid var(--border);border-radius:12px;padding:14px 18px;margin-bottom:10px}
+.flight-arrow{color:var(--gold);font-size:1.2rem}
+.flight-info{flex:1}
+.flight-route{font-weight:600;font-size:0.95rem;color:var(--ink)}
+.flight-detail{font-size:0.78rem;color:var(--slate);margin-top:2px}
+
+/* ===== MAP + INFO TABS ===== */
+#s-map{background:var(--white)}
+.tab-bar{display:flex;border-bottom:2px solid var(--border);margin-bottom:24px}
+.tab-btn{padding:10px 22px;font-size:0.82rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;border:none;background:none;color:var(--slate);border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s}
+.tab-btn.active{color:var(--terra);border-bottom-color:var(--terra)}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
+#map-svg-wrap{width:100%;overflow:hidden;border-radius:12px;border:1px solid var(--border)}
+#map-svg-wrap svg{width:100%;height:auto;display:block}
+
+/* ===== MAP LEGEND ===== */
+.map-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+.legend-item{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--mid);cursor:pointer}
+.legend-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.legend-house{width:10px;height:10px;flex-shrink:0;position:relative}
+
+/* ===== BOOKING DIR ===== */
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;margin-top:16px}
+.book-item{background:var(--ivory);border-radius:10px;padding:12px 14px;font-size:0.82rem}
+.book-item-name{font-weight:600;color:var(--ink);margin-bottom:3px}
+.book-item-type{font-size:0.72rem;color:var(--slate);margin-bottom:6px}
+.book-item a{color:var(--azure);text-decoration:none;font-size:0.78rem}
+.book-item a:hover{text-decoration:underline}
+
+/* ===== FOOTER ===== */
+footer{background:var(--ink);color:rgba(255,255,255,0.5);text-align:center;padding:32px 24px;font-size:0.78rem;letter-spacing:0.06em}
+footer span{color:var(--gold)}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity 0.65s ease,transform 0.65s ease}
+.reveal.visible{opacity:1;transform:none}
+
+/* ===== DESTINATION OVERLAY ===== */
+#dest-overlay{position:fixed;inset:0;z-index:500;display:none;flex-direction:column}
+#dest-overlay.open{display:flex}
+.dest-bg{position:absolute;inset:0;background:rgba(10,5,0,0.7);backdrop-filter:blur(4px)}
+.dest-panel{position:relative;z-index:1;background:var(--cream);border-radius:20px 20px 0 0;margin-top:auto;max-height:88vh;overflow-y:auto;padding:28px 24px 40px}
+.dest-close{position:absolute;top:16px;right:16px;width:34px;height:34px;border-radius:50%;background:var(--ivory);border:none;cursor:pointer;font-size:1.1rem;display:flex;align-items:center;justify-content:center}
+.dest-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ink);margin-bottom:4px}
+.dest-subtitle{font-size:0.8rem;color:var(--slate);margin-bottom:18px}
+.dest-body{font-size:0.88rem;color:var(--mid);line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="load-icon">&#9788;</div>
+  <div class="load-text">Preparing your Puglian adventure&hellip;</div>
+</div>
+
+<!-- NAV DOTS -->
+<nav class="nav-dots" id="nav-dots">
+  <a href="#s-hero"     class="nav-pip" data-label="Welcome"></a>
+  <a href="#s-flight"   class="nav-pip" data-label="Flights"></a>
+  <a href="#s-map"      class="nav-pip" data-label="Map"></a>
+  <a href="#s-day1"     class="nav-pip" data-label="Day 1"></a>
+  <a href="#s-day2"     class="nav-pip" data-label="Day 2"></a>
+  <a href="#s-day3"     class="nav-pip" data-label="Day 3"></a>
+  <a href="#s-day4"     class="nav-pip" data-label="Day 4"></a>
+  <a href="#s-day5"     class="nav-pip" data-label="Day 5"></a>
+  <a href="#s-day6"     class="nav-pip" data-label="Day 6"></a>
+  <a href="#s-farewell" class="nav-pip" data-label="Farewell"></a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="s-hero">
+  <canvas id="hero-canvas"></canvas>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">&#127481;&#127481; Puglia &middot; May 2027</div>
+    <h1 class="hero-title">The Heel of <em>Italy</em></h1>
+    <p class="hero-sub">Trulli &middot; Baroque &middot; Primitivo &middot; Adriatic Blues</p>
+    <p class="hero-names">Julian &middot; Lianne &middot; Donna &middot; Gary</p>
+    <div class="hero-scroll" onclick="document.getElementById('s-flight').scrollIntoView({behavior:'smooth'})">
+      <div class="hero-scroll-bar"></div>
+      <span>Begin</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLIGHTS ===== -->
+<section id="s-flight">
+  <div class="section-inner">
+    <span class="section-day reveal">Getting There &amp; Back</span>
+    <h2 class="section-title terra reveal">Your Flights</h2>
+    <p class="section-intro reveal">Fly into Bari to explore the north, then out of Brindisi after your Salento finale &mdash; no backtracking required.</p>
+
+    <div class="flight-row reveal">
+      <span style="font-size:1.6rem">&#9992;&#65039;</span>
+      <div class="flight-info">
+        <div class="flight-route">London Gatwick &rarr; Bari Karol Wojty&#322;a</div>
+        <div class="flight-detail">easyJet direct &middot; approx. 2h 45m &middot; check <a href="https://www.easyjet.com/en/cheap-flights/london-gatwick/bari" target="_blank" rel="noopener" style="color:var(--azure)">easyjet.com</a> for May dates &mdash; book early for best fares</div>
+      </div>
+      <div class="tag tag-g">OUTBOUND</div>
+    </div>
+
+    <div class="flight-row reveal">
+      <span style="font-size:1.6rem">&#9992;&#65039;</span>
+      <div class="flight-info">
+        <div class="flight-route">Brindisi Papola Casale &rarr; London Gatwick</div>
+        <div class="flight-detail">easyJet direct &middot; approx. 2h 40m &middot; Brindisi is 30 mins from Lecce by train &mdash; perfect for the end of your Salento leg</div>
+      </div>
+      <div class="tag tag-r">RETURN</div>
+    </div>
+
+    <div class="tip-box reveal">
+      <div class="tip-label">Transfer Tips</div>
+      <div class="tip-body">
+        Bari airport to Fasano/Ostuni: taxi ~50 mins (pre-book) or Bari Centrale by shuttle then train south.<br>
+        Brindisi airport to Lecce: taxi 30 mins or FSE regional train (~45 mins, very cheap).<br>
+        Between legs, Fasano/Ostuni &rarr; Lecce: <strong>direct train 1h 15m from Bari direction, under &euro;15pp</strong> on <a href="https://www.trenitalia.com" target="_blank" rel="noopener" style="color:var(--azure)">Trenitalia</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MAP / INFO ===== -->
+<section id="s-map">
+  <div class="section-inner">
+    <span class="section-day reveal">Overview</span>
+    <h2 class="section-title gold reveal">Your Puglia</h2>
+
+    <div class="tab-bar reveal">
+      <button class="tab-btn active" onclick="switchTab('list')">&#9776; Itinerary</button>
+      <button class="tab-btn" onclick="switchTab('map')">&#9679; Map</button>
+      <button class="tab-btn" onclick="switchTab('book')">&#128278; Booking Directory</button>
+    </div>
+
+    <!-- LIST TAB -->
+    <div class="tab-panel active" id="tab-list">
+      <div class="photo-strip reveal">
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=520&h=360&fit=crop&auto=format" alt="Trulli Alberobello" loading="lazy"><div class="photo-label">Alberobello trulli</div></div>
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1555990538-c4a85a2c9c22?w=520&h=360&fit=crop&auto=format" alt="Polignano a Mare" loading="lazy"><div class="photo-label">Polignano a Mare</div></div>
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=520&h=360&fit=crop&auto=format" alt="Puglia olive groves" loading="lazy"><div class="photo-label">Puglia olive groves</div></div>
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1604999333679-b86d54738315?w=520&h=360&fit=crop&auto=format" alt="Lecce Baroque" loading="lazy"><div class="photo-label">Lecce baroque</div></div>
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=520&h=360&fit=crop&auto=format" alt="Salento beach" loading="lazy"><div class="photo-label">Salento coast</div></div>
+        <div class="photo-strip-item"><img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=520&h=360&fit=crop&auto=format" alt="Puglia wine" loading="lazy"><div class="photo-label">Primitivo wine</div></div>
+      </div>
+      <div style="display:grid;gap:10px">
+        <div class="card reveal" style="border-left:3px solid var(--terra)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:1.2rem">&#127968;</span>
+            <div><div class="card-title">Leg 1 &mdash; Fasano / Ostuni (Nights 1&ndash;3)</div><div style="font-size:0.75rem;color:var(--slate)">The trulli heartland, Polignano cliffs, olive grove masserias</div></div>
+          </div>
+          <div class="card-body">Stay among ancient olive groves between Fasano and Ostuni. Arrive and decompress by the pool, a full day in Polignano with dinner in the sea cave, and a Valle d&rsquo;Itria tour &mdash; or a lazy pool day if you&rsquo;d rather do nothing.</div>
+        </div>
+        <div class="card reveal" style="border-left:3px solid var(--azure)">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+            <span style="font-size:1.2rem">&#127754;</span>
+            <div><div class="card-title">Leg 2 &mdash; Lecce / Salento (Nights 4&ndash;6)</div><div style="font-size:0.75rem;color:var(--slate)">Baroque city, Primitivo wine country, Adriatic beaches</div></div>
+          </div>
+          <div class="card-body">Train south to the Florence of the South. A baroque evening passeggiata, a beach day on Salento&rsquo;s Caribbean-blue coast, then a Primitivo wine tour through Manduria before a Michelin farewell dinner.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAP TAB -->
+    <div class="tab-panel" id="tab-map">
+      <div id="map-svg-wrap" class="reveal">
+        <svg viewBox="0 0 720 580" xmlns="http://www.w3.org/2000/svg" style="background:#D6EAF8">
+          <!-- Sea background fills svg -->
+          <!-- Land mass - simplified Puglia heel shape -->
+          <polygon points="180,30 480,30 530,100 560,160 570,240 560,310 530,370 480,420 440,480 400,530 370,560 340,540 310,500 330,450 310,410 270,380 240,340 210,300 200,260 190,210 170,160 160,100 165,60" fill="#E8E0CC" stroke="#C8B88A" stroke-width="1.5"/>
+          <!-- Adriatic coast right -->
+          <path d="M480,30 Q530,80 560,160 Q575,240 560,310 Q540,370 480,420 Q450,460 420,490 Q390,520 370,560" fill="none" stroke="#B0C8D8" stroke-width="1"/>
+          <!-- Ionian coast bottom -->
+          <path d="M340,540 Q310,510 290,470 Q270,430 260,390" fill="none" stroke="#B0C8D8" stroke-width="1"/>
+
+          <!-- ROADS / RAIL - simplified spine -->
+          <path d="M310,80 Q330,180 340,280 Q345,360 340,430" fill="none" stroke="#C8B88A" stroke-width="2" stroke-dasharray="6,4" opacity="0.6"/>
+          <!-- SS16 coastal road suggestion -->
+          <path d="M350,90 Q420,140 450,200 Q460,240 450,300" fill="none" stroke="#C8B88A" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.4"/>
+
+          <!-- LABELS -->
+          <text x="270" y="55" font-family="Georgia,serif" font-size="11" fill="#6B5A3A" font-style="italic">APULIA</text>
+          <text x="490" y="200" font-family="Georgia,serif" font-size="9" fill="#4A7090" font-style="italic">Adriatic</text>
+          <text x="490" y="212" font-family="Georgia,serif" font-size="9" fill="#4A7090" font-style="italic">Sea</text>
+          <text x="150" y="440" font-family="Georgia,serif" font-size="9" fill="#4A7090" font-style="italic">Ionian</text>
+          <text x="148" y="452" font-family="Georgia,serif" font-size="9" fill="#4A7090" font-style="italic">Sea</text>
+
+          <!-- ===== PINS ===== -->
+          <!-- 1: Bari - landmark blue -->
+          <circle cx="330" cy="90" r="10" fill="#1A6B9A" stroke="white" stroke-width="2"/>
+          <text x="330" y="94" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">1</text>
+          <text x="345" y="87" font-family="Georgia,serif" font-size="10" fill="#1A5078">Bari</text>
+          <text x="345" y="98" font-family="Georgia,serif" font-size="8" fill="#4A7090">Arrive / Day 2 base</text>
+
+          <!-- 2: Polignano a Mare - terra -->
+          <circle cx="380" cy="140" r="10" fill="#8B3A2A" stroke="white" stroke-width="2"/>
+          <text x="380" y="144" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">2</text>
+          <text x="395" y="137" font-family="Georgia,serif" font-size="10" fill="#8B3A2A">Polignano a Mare</text>
+          <text x="395" y="148" font-family="Georgia,serif" font-size="8" fill="#8B3A2A">Grotta Palazzese</text>
+
+          <!-- 3: Fasano / Masseria - house shape in gold -->
+          <g transform="translate(320,170)">
+            <polygon points="0,-11 11,0 11,11 -11,11 -11,0" fill="#C4962A" stroke="white" stroke-width="2"/>
+            <polygon points="0,-18 14,-4 -14,-4" fill="#C4962A" stroke="white" stroke-width="2"/>
+            <rect x="-4" y="3" width="8" height="8" fill="white" opacity="0.6"/>
+          </g>
+          <text x="337" y="168" font-family="Georgia,serif" font-size="10" fill="#9A7020">Fasano area</text>
+          <text x="337" y="179" font-family="Georgia,serif" font-size="8" fill="#9A7020">Masseria base</text>
+
+          <!-- 4: Alberobello - landmark blue -->
+          <circle cx="298" cy="210" r="10" fill="#1A6B9A" stroke="white" stroke-width="2"/>
+          <text x="298" y="214" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">4</text>
+          <text x="170" y="207" font-family="Georgia,serif" font-size="10" fill="#1A5078">Alberobello</text>
+          <text x="170" y="218" font-family="Georgia,serif" font-size="8" fill="#4A7090">Trulli UNESCO</text>
+
+          <!-- 5: Locorotondo - landmark blue -->
+          <circle cx="280" cy="240" r="10" fill="#1A6B9A" stroke="white" stroke-width="2"/>
+          <text x="280" y="244" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">5</text>
+          <text x="168" y="237" font-family="Georgia,serif" font-size="10" fill="#1A5078">Locorotondo</text>
+
+          <!-- 6: Ostuni (White City) - landmark blue -->
+          <circle cx="310" cy="280" r="10" fill="#1A6B9A" stroke="white" stroke-width="2"/>
+          <text x="310" y="284" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">6</text>
+          <text x="325" y="277" font-family="Georgia,serif" font-size="10" fill="#1A5078">Ostuni</text>
+          <text x="325" y="288" font-family="Georgia,serif" font-size="8" fill="#4A7090">White City</text>
+
+          <!-- 7: Lecce - house shape olive -->
+          <g transform="translate(300,360)">
+            <polygon points="0,-11 11,0 11,11 -11,11 -11,0" fill="#4A6741" stroke="white" stroke-width="2"/>
+            <polygon points="0,-18 14,-4 -14,-4" fill="#4A6741" stroke="white" stroke-width="2"/>
+            <rect x="-4" y="3" width="8" height="8" fill="white" opacity="0.6"/>
+          </g>
+          <text x="317" y="358" font-family="Georgia,serif" font-size="10" fill="#4A6741">Lecce</text>
+          <text x="317" y="369" font-family="Georgia,serif" font-size="8" fill="#4A6741">Baroque capital</text>
+
+          <!-- 8: Don Totu / San Cassiano - house shape terra -->
+          <g transform="translate(280,410)">
+            <polygon points="0,-11 11,0 11,11 -11,11 -11,0" fill="#8B3A2A" stroke="white" stroke-width="2"/>
+            <polygon points="0,-18 14,-4 -14,-4" fill="#8B3A2A" stroke="white" stroke-width="2"/>
+            <rect x="-4" y="3" width="8" height="8" fill="white" opacity="0.6"/>
+          </g>
+          <text x="145" y="408" font-family="Georgia,serif" font-size="10" fill="#8B3A2A">San Cassiano</text>
+          <text x="145" y="419" font-family="Georgia,serif" font-size="8" fill="#8B3A2A">Don Totu</text>
+
+          <!-- 9: Manduria wine - gold -->
+          <circle cx="235" cy="330" r="10" fill="#C4962A" stroke="white" stroke-width="2"/>
+          <text x="235" y="334" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">9</text>
+          <text x="128" y="327" font-family="Georgia,serif" font-size="10" fill="#9A7020">Manduria</text>
+          <text x="128" y="338" font-family="Georgia,serif" font-size="8" fill="#9A7020">Primitivo wine</text>
+
+          <!-- 10: Punta Prosciutto beach - azure -->
+          <circle cx="310" cy="460" r="10" fill="#1A6B9A" stroke="white" stroke-width="2"/>
+          <text x="310" y="464" text-anchor="middle" font-family="Arial" font-size="9" fill="white" font-weight="bold">10</text>
+          <text x="325" y="457" font-family="Georgia,serif" font-size="10" fill="#1A5078">Punta Prosciutto</text>
+          <text x="325" y="468" font-family="Georgia,serif" font-size="8" fill="#4A7090">Beach Day 5</text>
+
+          <!-- 11: Brindisi airport -->
+          <circle cx="370" cy="300" r="9" fill="#6B7280" stroke="white" stroke-width="2"/>
+          <text x="370" y="304" text-anchor="middle" font-family="Arial" font-size="9" fill="white">&#9992;</text>
+          <text x="384" y="297" font-family="Georgia,serif" font-size="10" fill="#6B7280">Brindisi</text>
+          <text x="384" y="308" font-family="Georgia,serif" font-size="8" fill="#6B7280">Return flight</text>
+
+          <!-- LEGEND BOX -->
+          <rect x="14" y="480" width="280" height="88" rx="8" fill="white" opacity="0.88"/>
+          <text x="24" y="497" font-family="Arial" font-size="9" font-weight="bold" fill="#4A4A4A">MAP KEY</text>
+          <circle cx="30" cy="511" r="5" fill="#8B3A2A"/><text x="40" y="514" font-family="Arial" font-size="8.5" fill="#4A4A4A">Restaurants &amp; landmarks</text>
+          <circle cx="30" cy="525" r="5" fill="#1A6B9A"/><text x="40" y="528" font-family="Arial" font-size="8.5" fill="#4A4A4A">Sites &amp; towns</text>
+          <circle cx="30" cy="539" r="5" fill="#C4962A"/><text x="40" y="542" font-family="Arial" font-size="8.5" fill="#4A4A4A">Wine &amp; food</text>
+          <!-- House for accommodation -->
+          <g transform="translate(30,549)"><polygon points="0,-6 6,0 6,6 -6,6 -6,0" fill="#9A7020" stroke="white" stroke-width="1"/><polygon points="0,-10 8,-2 -8,-2" fill="#9A7020" stroke="white" stroke-width="1"/></g>
+          <text x="40" y="556" font-family="Arial" font-size="8.5" fill="#4A4A4A">Accommodation</text>
+          <circle cx="150" cy="511" r="5" fill="#4A6741"/><text x="160" y="514" font-family="Arial" font-size="8.5" fill="#4A4A4A">Lecce base</text>
+          <circle cx="150" cy="525" r="5" fill="#6B7280"/><text x="160" y="528" font-family="Arial" font-size="8.5" fill="#4A4A4A">Airport</text>
+          <text x="150" y="556" font-family="Arial" font-size="7.5" fill="#6B7280" font-style="italic">&#9135; &#9135; train / road links</text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- BOOKING DIRECTORY TAB -->
+    <div class="tab-panel" id="tab-book">
+      <p style="font-size:0.85rem;color:var(--mid);margin-bottom:16px">All key bookings for the trip in one place.</p>
+      <div class="book-grid">
+        <div class="book-item">
+          <div class="book-item-name">easyJet</div>
+          <div class="book-item-type">Flights &mdash; LGW&rarr;BRI &amp; BDS&rarr;LGW</div>
+          <a href="https://www.easyjet.com" target="_blank" rel="noopener">easyjet.com</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Masseria Il Frantoio</div>
+          <div class="book-item-type">Mid-range &mdash; Leg 1, Fasano/Ostuni</div>
+          <a href="https://www.masseriailfrantoio.it" target="_blank" rel="noopener">masseriailfrantoio.it</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Masseria San Domenico</div>
+          <div class="book-item-type">Luxury &mdash; Leg 1, Fasano/Ostuni</div>
+          <a href="https://www.masseriasdomenico.com" target="_blank" rel="noopener">masseriasdomenico.com</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Palazzo de Noha</div>
+          <div class="book-item-type">Mid-range &mdash; Leg 2, Lecce</div>
+          <a href="https://www.palazzonoha.it" target="_blank" rel="noopener">palazzonoha.it</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Don Totu</div>
+          <div class="book-item-type">Luxury &mdash; Leg 2, San Cassiano</div>
+          <a href="https://www.dontotu.com" target="_blank" rel="noopener">dontotu.com</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Grotta Palazzese</div>
+          <div class="book-item-type">Dinner &mdash; Day 2, Polignano</div>
+          <a href="https://www.grottapalazzese.it/en/restaurant/" target="_blank" rel="noopener">grottapalazzese.it</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Valle d&rsquo;Itria Tour</div>
+          <div class="book-item-type">Day 3 &mdash; From Fasano/Ostuni area</div>
+          <a href="https://www.getyourguide.com/polignano-a-mare-l96415/itria-valley-polignano-ostuni-and-locorotondo-from-bari-t691284/" target="_blank" rel="noopener">GetYourGuide</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Primitivo Wine Tour</div>
+          <div class="book-item-type">Day 6 &mdash; From Lecce</div>
+          <a href="https://www.tripadvisor.com/AttractionProductReview-g194791-d11991589" target="_blank" rel="noopener">TripAdvisor / Viator</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Trenitalia</div>
+          <div class="book-item-type">Trains throughout (Bari &harr; Fasano &harr; Lecce)</div>
+          <a href="https://www.trenitalia.com" target="_blank" rel="noopener">trenitalia.com</a>
+        </div>
+        <div class="book-item">
+          <div class="book-item-name">Orecchiette Pasta Class</div>
+          <div class="book-item-type">Optional &mdash; Bari Vecchia, Day 2</div>
+          <a href="https://www.getyourguide.com/bari-l657/cooking-classes-tc109/" target="_blank" rel="noopener">GetYourGuide &mdash; Bari cooking</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 1 ===== -->
+<section id="s-day1">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 1 &middot; Saturday (TBC)</span>
+    <h2 class="section-title terra reveal">Into the Olive Groves</h2>
+    <p class="section-intro reveal">Land at Bari, transfer south to your masseria base, and ease into Puglia with the white hilltop city of Ostuni and a welcome dinner.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1533106497176-45ae19e68ba2?w=1200&h=440&fit=crop&auto=format" alt="Puglia olive groves and masseria" loading="lazy">
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Arrive<br>LGW&rarr;BRI</div>
+      <div class="t-body">
+        <p>easyJet direct to Bari. Pre-book a taxi or transfer van to your masseria &mdash; about 50 mins south. Drop bags, breathe in the herb garden, find the pool.</p>
+        <div class="card-tags"><span class="tag tag-r">TRANSFER PRE-BOOKED</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Early<br>Afternoon</div>
+      <div class="t-body">
+        <p><strong>Pool time.</strong> You&rsquo;ve just flown. Drop bags, find your room, and do nothing for a couple of hours. Both masserias are built for this &mdash; drinks by the pool, herb garden to wander, total quiet. The olive groves do something good to the pace of things.</p>
+        <div class="card-tags"><span class="tag tag-g">NO PLANS REQUIRED</span><span class="tag tag-b">JUST ARRIVE</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--olive);border-top-color:var(--olive)">Late<br>Afternoon</div>
+      <div class="t-body">
+        <p>When you&rsquo;re ready: head to <strong>Ostuni</strong> &mdash; the dazzling white city perched on three hills, visible for miles across the olive plain. Wander the labyrinthine lanes, the Cattedrale di Ostuni, terrace views over the Adriatic. Buses and taxis connect the masserias easily. Or simply stay by the pool &mdash; Ostuni works just as well on Day 2 morning.</p>
+        <div class="card-tags"><span class="tag tag-b">25 MINS FROM MASSERIAS</span><span class="tag tag-g">OPTIONAL TODAY</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">Evening</div>
+      <div class="t-body">
+        <p><strong>Welcome dinner at the masseria</strong> &mdash; both Il Frantoio and San Domenico have exceptional in-house restaurants. Il Frantoio&rsquo;s dinner uses produce from their own kitchen garden; a genuinely memorable first evening. Book your dinner when you book the room.</p>
+        <div class="card-tags"><span class="tag tag-o">BOOK IN ADVANCE</span><span class="tag tag-g">FARM TO TABLE</span></div>
+      </div>
+    </div>
+
+    <!-- Hotel choice -->
+    <div class="reveal">
+      <div class="tip-label" style="color:var(--slate);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:10px">Where You&rsquo;re Staying &mdash; Leg 1 (Nights 1&ndash;3)</div>
+      <div class="hotel-choice">
+        <div class="hotel-card mid">
+          <span class="opt-badge opt-m">Mid-Range</span>
+          <div class="hotel-label">Mid-Range Pick</div>
+          <div class="hotel-name"><a href="https://www.masseriailfrantoio.it" target="_blank" rel="noopener">Masseria Il Frantoio</a></div>
+          <div class="hotel-location">&#128205; SS16, Fasano &ndash; Ostuni &middot; Working olive farm</div>
+          <div class="hotel-desc">Ancient farmhouse set among centuries-old olive trees. Dinner uses herbs and vegetables grown on site &mdash; genuinely extraordinary. Atmospheric, intimate, and characterful without being chi-chi.</div>
+          <div class="hotel-price">From ~&pound;130 per room / night</div>
+          <div class="card-tags" style="margin-top:8px"><span class="tag tag-g">FARM RESTAURANT</span><span class="tag tag-g">OLIVE GROVES</span></div>
+        </div>
+        <div class="hotel-card lux">
+          <span class="opt-badge opt-l">Luxury</span>
+          <div class="hotel-label">Luxury Pick</div>
+          <div class="hotel-name"><a href="https://www.masseriasdomenico.com" target="_blank" rel="noopener">Masseria San Domenico</a></div>
+          <div class="hotel-location">&#128205; Fasano coastline &middot; 5-star</div>
+          <div class="hotel-desc">Private beach, enormous free-form pool, golf course, and a thalasso spa that uses seawater treatments. One of the most celebrated masserias in Puglia &mdash; widely regarded as the benchmark for this kind of luxury. If you&rsquo;re splashing out on one leg, this is it.</div>
+          <div class="hotel-price">From ~&pound;280&ndash;400+ per room / night</div>
+          <div class="card-tags" style="margin-top:8px"><span class="tag tag-o">PRIVATE BEACH</span><span class="tag tag-o">5 STAR SPA</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 2 ===== -->
+<section id="s-day2">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 2</span>
+    <h2 class="section-title terra reveal">Polignano &amp; the Cliff Dinner</h2>
+    <p class="section-intro reveal">The full Polignano experience: sea caves, whitewashed alleyways, raw seafood platters &mdash; and dinner inside a cave carved into the Adriatic cliffs.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1555990538-c4a85a2c9c22?w=1200&h=440&fit=crop&auto=format" alt="Polignano a Mare cliffs" loading="lazy">
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Morning<br>Optional</div>
+      <div class="t-body">
+        <div class="card" style="border-left:3px solid var(--olive)">
+          <span class="card-icon">&#127837;</span>
+          <div class="card-title">Orecchiette Pasta Class &mdash; Bari Vecchia</div>
+          <div class="card-body">Catch the early train to Bari (30 mins) for a hands-on pasta class with a local nonna in the old town lanes of Via dell&rsquo;Arco Basso. Watch the traditional ear-shaped pasta shaped by hand, then eat what you made. Back on the train to Polignano by midday.</div>
+          <div class="card-tags"><span class="tag tag-g">OPTIONAL ADD-ON</span><span class="tag tag-b">BOOK VIA GETYOURGUIDE</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Midday</div>
+      <div class="t-body">
+        <p>Train to <strong>Polignano a Mare</strong> &mdash; 30 mins from Fasano, under &euro;5. Enter through the Arco Marchesale into the whitewashed old town. Walk Via Commedia delle Mura where poetry is painted onto walls and doors, then find the terrace views at <strong>Terrazza Santo Stefano</strong> and <strong>Ponte Borbonico</strong>.</p>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Afternoon</div>
+      <div class="t-body">
+        <p>Walk down to <strong>Lama Monachile</strong> (Cala Porta) &mdash; the iconic pebble cove between two limestone cliffs crossed by the old Roman bridge. This is the photo. If time allows, book a 90-minute <strong>sea cave boat tour</strong> passing Grotta Azzurra and Grotta Arcivescovado. Sunset drink at <strong>Terrazza Monachile Bar</strong> overlooking the bay.</p>
+        <div class="card-tags"><span class="tag tag-b">BOAT TOURS FROM THE PORT</span><span class="tag tag-g">FREE BEACH BELOW CLIFFS</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">19:30<br>Booked</div>
+      <div class="t-body">
+        <div class="card" style="border-left:3px solid var(--gold)">
+          <span class="card-icon">&#127869;</span>
+          <div class="card-title" style="color:var(--gold)"><a href="https://www.grottapalazzese.it/en/restaurant/" target="_blank" rel="noopener">Grotta Palazzese &mdash; Cave Restaurant</a></div>
+          <div class="card-body"><strong>Book 4&ndash;6 weeks ahead for May.</strong> Book direct at grottapalazzese.it &mdash; third-party sites add a surcharge. Request a cliff-edge table in the booking comments (not guaranteed but worth asking). Dinner begins at 18:00; a 19:30 seating gives you the best of daylight turning to dusk. The cave setting is genuinely spectacular &mdash; you&rsquo;re inside a sea cave carved into the cliffside, with the Adriatic below.</div>
+          <div class="card-tags"><span class="tag tag-r">BOOK DIRECT</span><span class="tag tag-o">REQUEST CLIFF TABLE</span></div>
+          <div style="margin-top:10px;font-size:0.8rem;color:var(--slate)">Budget approx. &euro;250&ndash;300 per person with wine. The food is good, not exceptional &mdash; you are paying for the setting. Worth every euro as a bucket-list experience.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box reveal">
+      <div class="tip-label">Insider Note</div>
+      <div class="tip-body">After dinner you can linger in the cave &mdash; there&rsquo;s no strict rush once the last seating is done. The walk back through the illuminated old town at night is magical. Plenty of taxis from the main square back to your masseria, or pre-arrange with your hotel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 3 ===== -->
+<section id="s-day3">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 3</span>
+    <h2 class="section-title gold reveal">Valle d&rsquo;Itria &mdash; or Do Absolutely Nothing</h2>
+    <p class="section-intro reveal">Your chill day option for Leg 1. The trulli tour is brilliant and worth doing &mdash; but if Day 2 in Polignano was big, there&rsquo;s no shame in a pool day, a slow lunch at the masseria, and a late wander. Both options below.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1527631746610-bca00a040d60?w=1200&h=440&fit=crop&auto=format" alt="Alberobello trulli houses" loading="lazy">
+
+    <div class="grid g2 reveal" style="margin-bottom:24px">
+      <div class="card" style="border-top:3px solid var(--olive)">
+        <span class="card-icon">&#128652;</span>
+        <div class="card-title" style="color:var(--olive)">Option A &mdash; Do the Tour</div>
+        <div class="card-body"><a href="https://www.getyourguide.com/polignano-a-mare-l96415/itria-valley-polignano-ostuni-and-locorotondo-from-bari-t691284/" target="_blank" rel="noopener" style="color:var(--azure)">Valle d&rsquo;Itria day tour</a> from ~&pound;47pp. Depart 08:30. Covers <strong>Alberobello</strong> (UNESCO trulli, the hobbit-house village of Puglia), <strong>Locorotondo</strong> (circular whitewashed hilltop town, brilliant local white wine), and <strong>Ostuni</strong>. Traditional Apulian lunch included. Returns ~18:30.</div>
+        <div class="card-tags"><span class="tag tag-g">LUNCH INCLUDED</span><span class="tag tag-b">GETYOURGUIDE</span><span class="tag tag-r">FREE CANCELLATION</span></div>
+      </div>
+      <div class="card" style="border-top:3px solid var(--azure)">
+        <span class="card-icon">&#127946;</span>
+        <div class="card-title" style="color:var(--azure)">Option B &mdash; Pool Day</div>
+        <div class="card-body">Stay in. A slow masseria breakfast, a book by the pool, maybe a short walk in the olive grove, a long lunch. San Domenico has the pool and the beach &mdash; use both. Il Frantoio has the kitchen garden and a genuinely lovely atmosphere for doing very little. This is a holiday.</div>
+        <div class="card-tags"><span class="tag tag-g">NO AGENDA</span><span class="tag tag-o">POOL &amp; OLIVES</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">Evening</div>
+      <div class="t-body">
+        <p>Either way: a quiet evening back at the masseria before the move south tomorrow. Pool, aperitivo, an early-ish night. Last breakfast on the farm in the morning.</p>
+      </div>
+    </div>
+
+    <div class="highlight-box reveal">
+      <div style="font-weight:600;margin-bottom:6px;color:var(--ink)">&#127968; Alberobello &mdash; What to Know</div>
+      <p style="font-size:0.84rem;color:var(--mid);line-height:1.65">The trulli zone (Rione Monti) is genuinely unlike anywhere in Europe &mdash; over 1,500 stone cone-roofed houses, many still lived in. Busier in summer but fine in May. Buy nothing from the first stall you see; the ceramics and local products improve the further into the lanes you go.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 4 ===== -->
+<section id="s-day4">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 4</span>
+    <h2 class="section-title azure reveal">Move South &mdash; Into the Baroque</h2>
+    <p class="section-intro reveal">Check out of the masseria and take the train south to Lecce &mdash; the golden Baroque city that rewards slow wandering, excellent aperitivo, and some of the best pasta in Italy.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1604999333679-b86d54738315?w=1200&h=440&fit=crop&auto=format" alt="Lecce Baroque architecture" loading="lazy">
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Morning<br>Check-out</div>
+      <div class="t-body">
+        <p>Final masseria breakfast (eat well &mdash; the farm produce is extraordinary). Transfer to Fasano or Brindisi station for the southbound train. Journey takes about 1h 15m to Lecce.</p>
+        <div class="card-tags"><span class="tag tag-b">FROM ~&euro;11 ON TRENITALIA</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Afternoon</div>
+      <div class="t-body">
+        <p>Check in and go straight into the old town. <strong>Piazza del Duomo</strong> is the centrepiece &mdash; the cathedral, the Bell Tower and the Seminary form one of the most complete Baroque ensembles in southern Italy. Then the <strong>Basilica di Santa Croce</strong>, whose facade is a riot of carved figures that took 150 years to complete. Walk the back lanes: Via Vittorio Emanuele, the Roman amphitheatre in Piazza Sant&rsquo;Oronzo.</p>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">Aperitivo<br>19:00</div>
+      <div class="t-body">
+        <p>Lecce does aperitivo properly. Head to the streets around Piazza Sant&rsquo;Oronzo for Negroamaro and Fiano poured alongside free cicchetti. The city is illuminated at night and the Baroque buildings glow gold.</p>
+        <div class="card-tags"><span class="tag tag-o">PIAZZA SANT&rsquo;ORONZO</span><span class="tag tag-g">NEGROAMARO WINE</span></div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Dinner</div>
+      <div class="t-body">
+        <div class="grid g2">
+          <div class="card">
+            <span class="card-icon">&#127837;</span>
+            <div class="card-title">Alle Due Corti</div>
+            <div class="card-body">Old-school Salentine cooking, fresh pasta made daily. The quintessential first-night Lecce dinner &mdash; simple, authentic, local.</div>
+            <div class="card-tags"><span class="tag tag-g">TRADITIONAL</span><span class="tag tag-r">BOOK AHEAD</span></div>
+          </div>
+          <div class="card">
+            <span class="card-icon">&#127869;</span>
+            <div class="card-title"><a href="#" style="color:inherit">Osteria degli Spiriti</a></div>
+            <div class="card-body">Elegant osteria with excellent seafood antipasti, orecchiette with white rag&ugrave; and grilled lamb chops. Slightly more refined for a special evening.</div>
+            <div class="card-tags"><span class="tag tag-o">ELEGANT</span><span class="tag tag-r">BOOK AHEAD</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hotel choice leg 2 -->
+    <div class="reveal" style="margin-top:24px">
+      <div class="tip-label" style="color:var(--slate);font-size:0.72rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:700;margin-bottom:10px">Where You&rsquo;re Staying &mdash; Leg 2 (Nights 4&ndash;6)</div>
+      <div class="hotel-choice">
+        <div class="hotel-card mid">
+          <span class="opt-badge opt-m">Mid-Range</span>
+          <div class="hotel-label">Mid-Range Pick</div>
+          <div class="hotel-name"><a href="https://www.palazzonoha.it" target="_blank" rel="noopener">Palazzo de Noha</a></div>
+          <div class="hotel-location">&#128205; Old Town, Lecce &middot; Boutique</div>
+          <div class="hotel-desc">Rooftop pool, terrace breakfast with views over the old town, beautifully restored palazzo in the quieter quarter of the centro storico. Stylish and very well-located for evening wandering.</div>
+          <div class="hotel-price">From ~&pound;150&ndash;200 per room / night</div>
+          <div class="card-tags" style="margin-top:8px"><span class="tag tag-g">ROOFTOP POOL</span><span class="tag tag-g">OLD TOWN CENTRE</span></div>
+        </div>
+        <div class="hotel-card lux">
+          <span class="opt-badge opt-l">Luxury</span>
+          <div class="hotel-label">Luxury Pick</div>
+          <div class="hotel-name"><a href="https://www.dontotu.com" target="_blank" rel="noopener">Don Totu</a></div>
+          <div class="hotel-location">&#128205; San Cassiano &middot; Only 6 rooms</div>
+          <div class="hotel-desc">18th-century palazzo, only six rooms &mdash; you have the whole place. Pool among fruit trees and cypresses, underground hammam, free Vespa hire, evening aperitivo. 12 mins from the coast. One of the most intimate hotels in southern Italy.</div>
+          <div class="hotel-price">From ~&euro;345 (&pound;295) per room / night</div>
+          <div class="card-tags" style="margin-top:8px"><span class="tag tag-o">ONLY 6 ROOMS</span><span class="tag tag-o">FREE VESPAS</span><span class="tag tag-o">HAMMAM</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 5 ===== -->
+<section id="s-day5">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 5</span>
+    <h2 class="section-title azure reveal">Caribbean Blue &mdash; Salento Beaches</h2>
+    <p class="section-intro reveal">Your chill day for Leg 2. The Salento coastline in May: impossibly clear turquoise water, white sand, no crowds, unhurried lunch somewhere with your feet in the sand. Leave the agenda at the hotel.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&h=440&fit=crop&auto=format" alt="Salento beach turquoise water" loading="lazy">
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Punta<br>Prosciutto</div>
+      <div class="t-body">
+        <div class="card" style="border-left:3px solid var(--azure)">
+          <span class="card-icon">&#127958;</span>
+          <div class="card-title">Punta Prosciutto</div>
+          <div class="card-body">Wide pristine white sand, flat turquoise water that genuinely looks Caribbean, backed by a pine forest. In May the car park is nowhere near full and the water is warm enough to swim. Designated a protected coastal zone &mdash; no development visible from the beach.<br><br><strong>Getting there without a car:</strong> Pre-book a taxi from Lecce (~45 mins, ~&euro;40 each way) or join a beach day tour from Lecce (several operators run these in summer &mdash; check GetYourGuide or Viator closer to the date). If staying at Don Totu, they&rsquo;re 12 mins from this coast anyway &mdash; the Vespas are an option.</div>
+          <div class="card-tags"><span class="tag tag-b">TAXI ~&euro;40 EACH WAY</span><span class="tag tag-g">PROTECTED COASTAL ZONE</span><span class="tag tag-o">MAY = NO CROWDS</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Or<br>Consider</div>
+      <div class="t-body">
+        <div class="card">
+          <span class="card-icon">&#129695;</span>
+          <div class="card-title">Torre Sant&rsquo;Andrea &mdash; Limestone Sea Stacks</div>
+          <div class="card-body">On the Adriatic side: dramatic limestone faraglioni (sea stacks) rising from crystal water, natural rock pools, and a tiny fishing village. More dramatic scenery than Punta Prosciutto, less swimming-friendly sand. Both are about the same distance from Lecce &mdash; pick one, or do a morning at one and afternoon at the other.</div>
+          <div class="card-tags"><span class="tag tag-b">ADRIATIC COAST</span><span class="tag tag-g">DRAMATIC SCENERY</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">Evening</div>
+      <div class="t-body">
+        <p>Back for aperitivo in Lecce &mdash; golden hour in a golden city. Tonight is low-key: <strong>Trattoria Le Zie</strong> for cash-only, no-frills Salentine cooking that feels like eating in a local family&rsquo;s kitchen, or sit outside at any osteria near Piazza Sant&rsquo;Oronzo. Save your appetite &mdash; big wine day tomorrow.</p>
+        <div class="card-tags"><span class="tag tag-r">LE ZIE: CASH ONLY</span><span class="tag tag-g">NO RESERVATION NEEDED WEEKDAY</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DAY 6 ===== -->
+<section id="s-day6">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 6</span>
+    <h2 class="section-title olive reveal">Primitivo &amp; Negroamaro &mdash; Then One Last Dinner</h2>
+    <p class="section-intro reveal">A full wine day through Manduria: two Primitivo estates, a traditional lunch, back by mid-afternoon. Then the farewell dinner Puglia deserves.</p>
+    <img class="photo-banner reveal" src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1200&h=440&fit=crop&auto=format" alt="Puglia wine Primitivo" loading="lazy">
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--olive);border-top-color:var(--olive)">Full Day<br>Tour</div>
+      <div class="t-body">
+        <div class="card" style="border-left:3px solid var(--olive)">
+          <span class="card-icon">&#127863;</span>
+          <div class="card-title"><a href="https://www.tripadvisor.com/AttractionProductReview-g194791-d11991589-Primitivo_and_Negroamaro_wine_tour_a_visit_to_two_wineries_and_typical_lunch_From_.html" target="_blank" rel="noopener">Primitivo &amp; Negroamaro Wine Tour from Lecce</a></div>
+          <div class="card-body">Guided tour to two wineries in the Manduria DOC zone. Cellar tours, barrel tastings, traditional Apulian lunch with the wines. Returns to Lecce mid-afternoon &mdash; enough time to freshen up before dinner.</div>
+          <div class="card-tags"><span class="tag tag-g">LUNCH INCLUDED</span><span class="tag tag-r">BOOK VIA TRIPADVISOR</span><span class="tag tag-o">PRIMITIVO DI MANDURIA DOC</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tip-box reveal">
+      <div class="tip-label">What to Look For</div>
+      <div class="tip-body">
+        <strong>Primitivo di Manduria</strong> &mdash; full-bodied, plummy, 14&ndash;16% ABV. Often aged in French and American oak. Try vintage 2019 or 2020 if available &mdash; outstanding years.<br><br>
+        <strong>Negroamaro</strong> &mdash; darker, more tannic, earthy and savoury. Often blended with Malvasia Nera. A great contrast in the tastings.
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--gold);border-top-color:var(--gold)">Farewell<br>Dinner</div>
+      <div class="t-body">
+        <div class="card" style="border-left:3px solid var(--gold)">
+          <span class="card-icon">&#127869;</span>
+          <div class="card-title" style="color:var(--gold)">Primo Restaurant &mdash; Michelin Starred</div>
+          <div class="card-body">Chef Solaika Marrocco&rsquo;s Lecce restaurant is the finest meal you&rsquo;ll have in Puglia. Seasonal Salentine ingredients, exceptional wine list, and a room that feels like a proper occasion. <strong>Book well ahead &mdash; this fills weeks in advance for May.</strong> End with a final slow walk through the illuminated Baroque centro storico. End of the line in the best possible way.</div>
+          <div class="card-tags"><span class="tag tag-r">BOOK WELL AHEAD</span><span class="tag tag-o">MICHELIN STARRED</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAREWELL ===== -->
+<section id="s-farewell">
+  <div class="day-stripe"></div>
+  <div class="section-inner">
+    <span class="section-day reveal">Day 7 &middot; Departure</span>
+    <h2 class="section-title terra reveal">Arrivederci, Puglia</h2>
+    <p class="section-intro reveal">A slow morning, then transfer to Brindisi for the flight home.</p>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--terra);border-top-color:var(--terra)">Morning</div>
+      <div class="t-body">
+        <p>Final coffee and a <em>pasticciotto</em> &mdash; Lecce&rsquo;s beloved oval pastry filled with custard cream, invented here and impossible to find as good anywhere else. Sit in Piazza Sant&rsquo;Oronzo one last time.</p>
+      </div>
+    </div>
+
+    <div class="time-block reveal">
+      <div class="t-tag" style="color:var(--azure);border-top-color:var(--azure)">Transfer<br>BDS</div>
+      <div class="t-body">
+        <p>Lecce to Brindisi: <strong>30-min taxi</strong> (~&euro;30) or FSE regional train (~45 mins, very cheap). Brindisi airport is small and relaxed &mdash; arrive 90 mins before departure. Direct easyJet to Gatwick.</p>
+        <div class="card-tags"><span class="tag tag-b">TAXI ~&euro;30</span><span class="tag tag-g">30 MINS TO AIRPORT</span></div>
+      </div>
+    </div>
+
+    <div class="highlight-box reveal" style="text-align:center;padding:28px 20px">
+      <div style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--terra);margin-bottom:8px">Until next time&hellip;</div>
+      <div style="font-size:0.88rem;color:var(--mid)">Puglia &middot; May 2027 &middot; A Downhillers Adventure<br>Julian &middot; Lianne &middot; Donna &middot; Gary</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div style="margin-bottom:6px"><span>Puglia &amp; Salento &middot; May 2027</span> &middot; A Downhillers Mini-Break</div>
+  <div>Julian &middot; Lianne &middot; Donna &middot; Gary</div>
+</footer>
+
+<!-- DESTINATION OVERLAY (kept minimal, expandable) -->
+<div id="dest-overlay">
+  <div class="dest-bg" onclick="closeDest()"></div>
+  <div class="dest-panel">
+    <button class="dest-close" onclick="closeDest()">&#10005;</button>
+    <div id="dest-content"></div>
+  </div>
+</div>
+
+<script>
+// Loading
+window.addEventListener('load', function() {
+  setTimeout(function() {
+    document.getElementById('loading').classList.add('done');
+  }, 1200);
+});
+
+// Reveal on scroll
+var reveals = document.querySelectorAll('.reveal');
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); }
+  });
+}, { threshold: 0.12 });
+reveals.forEach(function(r) { obs.observe(r); });
+
+// Nav pip active state
+var secIds = ['s-hero','s-flight','s-map','s-day1','s-day2','s-day3','s-day4','s-day5','s-day6','s-farewell'];
+var pips = document.querySelectorAll('.nav-pip');
+function updateNav() {
+  var y = window.scrollY + window.innerHeight * 0.35;
+  var active = 0;
+  secIds.forEach(function(id, i) {
+    var el = document.getElementById(id);
+    if (el && el.offsetTop <= y) { active = i; }
+  });
+  pips.forEach(function(p, i) { p.classList.toggle('active', i === active); });
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+
+// Tab switching
+function switchTab(name) {
+  var panels = document.querySelectorAll('.tab-panel');
+  var btns = document.querySelectorAll('.tab-btn');
+  panels.forEach(function(p) { p.classList.remove('active'); });
+  btns.forEach(function(b) { b.classList.remove('active'); });
+  document.getElementById('tab-' + name).classList.add('active');
+  var idx = ['list','map','book'].indexOf(name);
+  if (btns[idx]) { btns[idx].classList.add('active'); }
+}
+
+// Overlay
+function closeDest() {
+  document.getElementById('dest-overlay').classList.remove('open');
+}
+
+// Hero canvas — olive grove / Adriatic inspired
+var canvas = document.getElementById('hero-canvas');
+var ctx = canvas.getContext('2d');
+var W, H;
+var stars = [];
+var olives = [];
+var petals = [];
+
+function resize() {
+  W = canvas.width = canvas.offsetWidth;
+  H = canvas.height = canvas.offsetHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+// Initialise particles
+for (var i = 0; i < 60; i++) {
+  stars.push({
+    x: Math.random(), y: Math.random() * 0.5,
+    r: Math.random() * 1.2 + 0.3,
+    a: Math.random()
+  });
+}
+for (var j = 0; j < 18; j++) {
+  olives.push({
+    x: Math.random() * W, y: Math.random() * H * 0.8 + H * 0.1,
+    size: Math.random() * 6 + 4,
+    speed: Math.random() * 0.3 + 0.1,
+    sway: Math.random() * Math.PI * 2,
+    swaySpeed: Math.random() * 0.015 + 0.005
+  });
+}
+for (var k = 0; k < 20; k++) {
+  petals.push({
+    x: Math.random(), y: Math.random(),
+    size: Math.random() * 4 + 2,
+    speed: Math.random() * 0.0008 + 0.0003,
+    sway: Math.random() * Math.PI * 2,
+    swayAmp: Math.random() * 0.015 + 0.005,
+    swaySpeed: Math.random() * 0.02 + 0.008,
+    alpha: Math.random() * 0.5 + 0.3
+  });
+}
+
+function drawHero(t) {
+  // Sky gradient — warm Mediterranean dusk
+  var sky = ctx.createLinearGradient(0, 0, 0, H);
+  sky.addColorStop(0, '#1A0A2E');
+  sky.addColorStop(0.35, '#3D1A0A');
+  sky.addColorStop(0.65, '#8B3A0A');
+  sky.addColorStop(0.85, '#C4742A');
+  sky.addColorStop(1, '#D4A040');
+  ctx.fillStyle = sky;
+  ctx.fillRect(0, 0, W, H);
+
+  // Stars
+  stars.forEach(function(s) {
+    ctx.beginPath();
+    ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+    ctx.fillStyle = 'rgba(255,240,200,' + (0.4 + 0.6 * s.a * Math.abs(Math.sin(t * 0.001 + s.a * 10))) + ')';
+    ctx.fill();
+  });
+
+  // Distant sea horizon glow
+  var seaGlow = ctx.createLinearGradient(0, H * 0.62, 0, H * 0.72);
+  seaGlow.addColorStop(0, 'rgba(196,116,42,0.5)');
+  seaGlow.addColorStop(1, 'rgba(20,60,100,0.0)');
+  ctx.fillStyle = seaGlow;
+  ctx.fillRect(0, H * 0.62, W, H * 0.1);
+
+  // Sea
+  var sea = ctx.createLinearGradient(0, H * 0.68, 0, H);
+  sea.addColorStop(0, '#1A4060');
+  sea.addColorStop(1, '#0D2030');
+  ctx.fillStyle = sea;
+  ctx.fillRect(0, H * 0.68, W, H * 0.32);
+
+  // Sea shimmer lines
+  for (var li = 0; li < 5; li++) {
+    var ly = H * (0.71 + li * 0.05);
+    var lw = Math.sin(t * 0.002 + li * 1.3) * 0.3 + 0.7;
+    ctx.beginPath();
+    ctx.moveTo(0, ly);
+    ctx.lineTo(W, ly);
+    ctx.strokeStyle = 'rgba(196,150,42,' + (0.06 * lw) + ')';
+    ctx.lineWidth = 0.8;
+    ctx.stroke();
+  }
+
+  // Olive grove silhouette
+  ctx.fillStyle = '#0A1208';
+  for (var ti = 0; ti < 12; ti++) {
+    var tx2 = (W / 11) * ti;
+    var th = H * (0.28 + Math.sin(ti * 2.1) * 0.06);
+    var ty2 = H * 0.68 - th;
+    // Trunk
+    ctx.fillRect(tx2 + 14, H * 0.68 - th * 0.3, 4, th * 0.3);
+    // Canopy - oval
+    ctx.beginPath();
+    ctx.ellipse(tx2 + 16, ty2 + th * 0.2, 16 + Math.sin(ti * 1.7) * 6, th * 0.42, 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // Trullo silhouette (cone shape) left
+  ctx.fillStyle = '#0E1A0E';
+  ctx.beginPath();
+  ctx.moveTo(W * 0.12, H * 0.68);
+  ctx.lineTo(W * 0.12 + 28, H * 0.68);
+  ctx.lineTo(W * 0.12 + 28, H * 0.58);
+  ctx.lineTo(W * 0.12 + 14, H * 0.5);
+  ctx.closePath();
+  ctx.fill();
+  ctx.beginPath();
+  ctx.moveTo(W * 0.16, H * 0.68);
+  ctx.lineTo(W * 0.16 + 22, H * 0.68);
+  ctx.lineTo(W * 0.16 + 22, H * 0.60);
+  ctx.lineTo(W * 0.16 + 11, H * 0.52);
+  ctx.closePath();
+  ctx.fill();
+
+  // Petals drifting
+  petals.forEach(function(p) {
+    p.sway += p.swaySpeed;
+    p.y += p.speed;
+    if (p.y > 1) { p.y = 0; p.x = Math.random(); }
+    var px = (p.x + Math.sin(p.sway) * p.swayAmp) * W;
+    var py = p.y * H;
+    ctx.save();
+    ctx.globalAlpha = p.alpha;
+    ctx.fillStyle = '#E8B060';
+    ctx.beginPath();
+    ctx.ellipse(px, py, p.size, p.size * 0.5, p.sway, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  });
+}
+
+var frame = 0;
+function animate(t) {
+  drawHero(t);
+  requestAnimationFrame(animate);
+}
+requestAnimationFrame(animate);
+</script>
+</body>
+</html>
