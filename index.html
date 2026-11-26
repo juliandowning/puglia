@@ -189,6 +189,34 @@ footer span{color:var(--gold)}
 .dest-title{font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ink);margin-bottom:4px}
 .dest-subtitle{font-size:0.8rem;color:var(--slate);margin-bottom:18px}
 .dest-body{font-size:0.88rem;color:var(--mid);line-height:1.7}
+
+/* ── Budget table mobile ── */
+.budget-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+.budget-wrap table { min-width:520px; }
+@media(max-width:600px){
+  .budget-wrap table { display:none; }
+  .budget-cards { display:block !important; }
+  .budget-card { display:grid; grid-template-columns:1fr auto; gap:2px 12px;
+    padding:11px 14px; border-bottom:1px solid var(--line); }
+  .budget-card:nth-child(odd){ background:var(--ivory); }
+  .bc-item { font-weight:600; font-size:0.88rem; color:var(--ink); grid-column:1; }
+  .bc-when { font-size:0.72rem; color:var(--slate); grid-column:1; }
+  .bc-cost { font-weight:700; color:var(--terra); font-size:0.95rem;
+    grid-column:2; grid-row:1/3; align-self:center; text-align:right; white-space:nowrap; }
+  .bc-note { font-size:0.75rem; color:var(--slate); grid-column:1/-1; margin-top:3px; }
+}
+@media(min-width:601px){ .budget-cards { display:none; } }
+
+/* ── General mobile fixes ── */
+@media(max-width:600px){
+  .section-inner{ padding:40px 16px; }
+  .hotel-choice{ flex-direction:column !important; }
+  .time-block .t-body p{ font-size:0.92rem; }
+  .tip-label{ font-size:0.68rem !important; }
+  .card{ padding:14px 14px !important; }
+  .section-title{ font-size:1.6rem !important; }
+  .section-intro{ font-size:0.95rem; }
+}
 </style>
 </head>
 <body>
@@ -1022,7 +1050,7 @@ requestAnimationFrame(animate);
   <div class="section-inner">
     <h2 style="font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--ink);margin-bottom:6px">Budget Estimate</h2>
     <p style="color:var(--slate);font-size:0.9rem;margin-bottom:28px">Per person, two people sharing. Flights booked in advance. Booking.com with free cancellation throughout. All figures approximate.</p>
-    <table style="width:100%;border-collapse:collapse;font-size:0.9rem;font-family:'Inter',sans-serif">
+    <div class="budget-wrap"><table style="width:100%;border-collapse:collapse;font-size:0.9rem;font-family:'Inter',sans-serif">
       <thead>
         <tr style="border-bottom:2px solid var(--terra)">
           <th style="text-align:left;padding:10px 12px;color:var(--terra);font-weight:700">Item</th>
@@ -1104,7 +1132,82 @@ requestAnimationFrame(animate);
           <td style="padding:12px 12px;font-size:0.82rem;color:rgba(255,255,255,0.85)">Comfortably under &pound;1,100pp. Budget &pound;1,000pp to feel relaxed with room for a good dinner.</td>
         </tr>
       </tbody>
-    </table>
+    </table></div>
+
+    <div class="budget-cards" style="display:none;border:1px solid var(--line);border-radius:8px;overflow:hidden;margin-top:16px">
+      <div class="budget-card">
+        <div class="bc-item">Flights (LGW &harr; BRI)</div>
+        <div class="bc-when">Book now</div>
+        <div class="bc-cost">&pound;120&ndash;160</div>
+        <div class="bc-note">easyJet direct. Book early for best prices. Free cancellation on Flexi fares.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Nights 1&ndash;2 · Fasano/Ostuni</div>
+        <div class="bc-when">Day 1&ndash;2</div>
+        <div class="bc-cost">&pound;100&ndash;140</div>
+        <div class="bc-note">Booking.com apartment or agriturismo, Fasano/Ostuni area. Free cancellation filter essential.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Transfer: Bari airport &rarr; Fasano</div>
+        <div class="bc-when">Day 1</div>
+        <div class="bc-cost">&pound;25&ndash;35</div>
+        <div class="bc-note">Pre-booked taxi to Fasano/Ostuni, split 4 ways. Or bus to Bari Centrale then train (~&euro;6).</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Day 2 · Polignano train + dinner</div>
+        <div class="bc-when">Day 2</div>
+        <div class="bc-cost">&pound;60&ndash;80</div>
+        <div class="bc-note">Train (~&euro;4), cliff-top dinner at Il Bastione or Covo dei Saraceni (~&euro;50&ndash;70pp).</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Day 3 · Trains (Fasano&rarr;Alberobello&rarr;Lecce)</div>
+        <div class="bc-when">Day 3</div>
+        <div class="bc-cost">&pound;15&ndash;20</div>
+        <div class="bc-note">FSE regional trains throughout. Cheap and scenic.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Nights 3&ndash;5 · Lecce old town</div>
+        <div class="bc-when">Days 3&ndash;5</div>
+        <div class="bc-cost">&pound;180&ndash;240</div>
+        <div class="bc-note">3 nights. Booking.com palazzo B&B or apartment, historic centre. &pound;70&ndash;90/night per room.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Day 4 · Salento beaches (taxi)</div>
+        <div class="bc-when">Day 4</div>
+        <div class="bc-cost">&pound;25&ndash;35</div>
+        <div class="bc-note">Pre-booked return taxi to Punta Prosciutto (~&euro;40 each way, split 4 ways). Beach entry free.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Day 5 · Farewell dinner</div>
+        <div class="bc-when">Day 5</div>
+        <div class="bc-cost">&pound;80&ndash;120</div>
+        <div class="bc-note">Osteria degli Spiriti or Alle Due Corti &mdash; rustic, authentic, ~&euro;35&ndash;50pp. Book ahead.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Day 6 · Transfer to Brindisi</div>
+        <div class="bc-when">Day 6</div>
+        <div class="bc-cost">&pound;10&ndash;20</div>
+        <div class="bc-note">FSE train Lecce&rarr;Brindisi (~45 mins, ~&euro;4) or taxi (~&euro;30, split 4 ways).</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">All other meals</div>
+        <div class="bc-when">Throughout</div>
+        <div class="bc-cost">&pound;180&ndash;220</div>
+        <div class="bc-note">Breakfasts included. Lunches ~&euro;15&ndash;20pp. 3 dinners not listed above ~&euro;40&ndash;60pp each.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">Incidentals</div>
+        <div class="bc-when">Throughout</div>
+        <div class="bc-cost">&pound;60&ndash;80</div>
+        <div class="bc-note">Gelato, coffees, local wine from an enoteca, entrance to amphitheatre etc.</div>
+      </div>
+      <div class="budget-card">
+        <div class="bc-item">TOTAL ESTIMATE</div>
+        <div class="bc-when">&pound;855&ndash;1,145</div>
+        <div class="bc-cost">Comfortably under &pound;1,100pp. Budget &pound;1,000pp to feel relaxed with room for a good dinner.</div>
+        
+      </div>
+    </div>
     <p style="margin-top:16px;font-size:0.78rem;color:var(--mid)">&#9888; Always book accommodation with <strong>free cancellation</strong> on Booking.com. Check the exact deadline &mdash; aim for cancellation up to 7&ndash;14 days before arrival.</p>
   </div>
 </section>
